@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hWD-gU-Sps">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hWD-gU-Sps">
                                 <rect key="frame" x="54" y="60" width="203" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="192" id="3PG-8U-rJ7"/>
@@ -29,8 +29,11 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="userInputChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="P5X-01-4dp"/>
+                                </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-LD-ijp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-LD-ijp">
                                 <rect key="frame" x="265" y="64" width="103" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="103" id="ADx-6f-HHc"/>
@@ -71,10 +74,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="convertButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4MH-vp-FaD"/>
+                                    <action selector="convertButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dsL-Yq-eWS"/>
                                 </connections>
                             </button>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7do-8e-YWf">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7do-8e-YWf">
                                 <rect key="frame" x="16" y="61" width="32" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="89O-bi-fJu"/>
@@ -86,6 +89,9 @@
                                     <segment title="-"/>
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="signSegmentSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="CFu-rk-vYv"/>
+                                </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AZl-Ip-c3t">
                                 <rect key="frame" x="41" y="430" width="291.66666666666669" height="28"/>
@@ -111,6 +117,11 @@
                                             <segment title="none"/>
                                         </segments>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="decimalSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WKa-rj-Qj3"/>
+                                            <action selector="decimalSelected:" destination="BYZ-38-t0r" eventType="editingChanged" id="i7z-Wh-Dvw"/>
+                                            <action selector="decimalSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="jYK-Q2-sWG"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <constraints>
@@ -154,10 +165,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="formulaPicker" destination="n3d-BH-9XN" id="Oug-eK-cYH"/>
-                        <outlet property="fromUnitsLabel" destination="DB5-LD-ijp" id="Fap-Ps-JwV"/>
-                        <outlet property="resultsLabel" destination="UYa-LE-jIB" id="0j6-60-L3B"/>
-                        <outlet property="userInput" destination="hWD-gU-Sps" id="46K-BE-MP1"/>
+                        <outlet property="decimalSegment" destination="8j3-X6-ric" id="lfN-VR-OgI"/>
+                        <outlet property="formulaPicker" destination="n3d-BH-9XN" id="Zd1-Fg-awg"/>
+                        <outlet property="fromUnitsLabel" destination="DB5-LD-ijp" id="mjt-R0-oQu"/>
+                        <outlet property="resultsLabel" destination="UYa-LE-jIB" id="cTJ-j2-P3Z"/>
+                        <outlet property="signSegment" destination="7do-8e-YWf" id="Fy3-k7-C11"/>
+                        <outlet property="userInput" destination="hWD-gU-Sps" id="WuP-J9-Kmn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
